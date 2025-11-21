@@ -1,0 +1,215 @@
+You are an experienced programming instructor. Convert a single GitHub Pull Request (PR) into a **realistic, agent-style coding assessment**.
+
+**Only output the question** between the required delimiters. Do **not** include any solutions, assets, metadata, or diffs.
+
+## Inputs (provided below via placeholders)
+
+* `{PR_JSON}`: Raw PR object (title, body, comments, commits, timestamps, etc.). + PR #1: 爬去知乎用户数据
+State: closed
+Created: 2016-03-19T04:31:00Z
+Merged: 2016-03-19T04:31:09Z
+Author: LiuRoy
+URL: https://github.com/LiuRoy/zhihu_spider/pull/1
+
+Body:
+1. 不能实现异步下载图片
+2. 用户关系不能增量减少
+
+
+Changes: +531/-0 lines in 11 files
+
+* `{PATCH_UNIFIED_DIFF}`: Full unified diff of the PR. **For reference only. Do not reveal any of it.** + Patch (500 chars):
+From edec8f13a49eb9bdbbe341945e836f4a784a4f4e Mon Sep 17 00:00:00 2001
+From: "ruoyu.liu" <ruoyu.liu@ele.me>
+Date: Wed, 16 Mar 2016 17:06:02 +0800
+Subject: [PATCH 1/2] initialize project
+
+---
+ .gitignore                      |  2 +
+ requirements.txt                |  1 +
+ zhihu/scrapy.cfg                | 11 +++++
+ zhihu/zhihu/__init__.py         |  0
+ zhihu/zhihu/items.py            | 14 ++++++
+ zhihu/zhihu/pipelines.py        | 11 +++++
+ zhihu/zhihu/settings.py         | 85 ++++++++++++++++++++
+
+* `{PATCH_METADATA}`: Files changed + per-file additions/deletions. + Files changed: 18
+Lines added: 567
+Lines deleted: 36
+Net change: 531
+
+Changed files (18):
+  - .gitignore: +2/-0
+  - requirements.txt: +1/-0
+  - zhihu/scrapy.cfg: +11/-0
+  - zhihu/zhihu/__init__.py: +0/-0
+  - zhihu/zhihu/items.py: +14/-0
+  - zhihu/zhihu/pipelines.py: +11/-0
+  - zhihu/zhihu/settings.py: +85/-0
+  - zhihu/zhihu/spiders/__init__.py: +4/-0
+  - zhihu/zhihu/spiders/test.py: +25/-0
+  - .gitignore: +2/-0
+  - requirements.txt: +2/-0
+  - zhihu/main.py: +4/-0
+  - zhihu/zhihu/constants.py: +35/-0
+  - zhihu/zhihu/items.py: +41/-5
+  - zhihu/zhihu/pipelines.py: +85/-0
+  - zhihu/zhihu/settings.py: +27/-6
+  - zhihu/zhihu/spiders/profile.py: +218/-0
+  - zhihu/zhihu/spiders/test.py: +0/-25
+
+* `{BASE_COMMIT_SHA}`: The base commit SHA the PR applies to. + d78c5d42fc4ee2c7ad717dee6cdd405b7be6a8d7
+
+* `{REPO_METADATA}`: Repo identifiers (owner/name/URLs). + Full name: Unknown/Unknown
+Owner: Unknown
+Name: Unknown
+URL: https://github.com/Unknown/Unknown
+
+* `{BASE_CODE_TAR_PATH}` or `{BASE_CODE_DIR}`: Base commit code bundle/path. + Base code directory: /data/xubing/oss_swe/swebench_sample_40k_commit_raw_code/LiuRoy#zhihu_spider#pull#1/source_code
+Total files in directory: 1
+GitHub tree (base commit): https://github.com/Unknown/Unknown/tree/d78c5d42fc4ee2c7ad717dee6cdd405b7be6a8d7
+
+* `{ORACLE_FILES}` (optional): Original versions of the edited files at `{BASE_COMMIT_SHA}` for quoting **small context snippets** only. + Oracle files count: 18
+
+Oracle files (showing first 3 file contents, truncated):
+
+--- .gitignore ---
+
+
+--- requirements.txt ---
+
+
+--- zhihu/scrapy.cfg ---
+
+
+... and 15 more oracle files
+
+All edited files in base commit:
+  https://github.com/Unknown/Unknown/blob/d78c5d42fc4ee2c7ad717dee6cdd405b7be6a8d7/.gitignore
+  https://github.com/Unknown/Unknown/blob/d78c5d42fc4ee2c7ad717dee6cdd405b7be6a8d7/requirements.txt
+  https://github.com/Unknown/Unknown/blob/d78c5d42fc4ee2c7ad717dee6cdd405b7be6a8d7/zhihu/scrapy.cfg
+  https://github.com/Unknown/Unknown/blob/d78c5d42fc4ee2c7ad717dee6cdd405b7be6a8d7/zhihu/zhihu/__init__.py
+  https://github.com/Unknown/Unknown/blob/d78c5d42fc4ee2c7ad717dee6cdd405b7be6a8d7/zhihu/zhihu/items.py
+  https://github.com/Unknown/Unknown/blob/d78c5d42fc4ee2c7ad717dee6cdd405b7be6a8d7/zhihu/zhihu/pipelines.py
+  https://github.com/Unknown/Unknown/blob/d78c5d42fc4ee2c7ad717dee6cdd405b7be6a8d7/zhihu/zhihu/settings.py
+  https://github.com/Unknown/Unknown/blob/d78c5d42fc4ee2c7ad717dee6cdd405b7be6a8d7/zhihu/zhihu/spiders/__init__.py
+  https://github.com/Unknown/Unknown/blob/d78c5d42fc4ee2c7ad717dee6cdd405b7be6a8d7/zhihu/zhihu/spiders/test.py
+  https://github.com/Unknown/Unknown/blob/d78c5d42fc4ee2c7ad717dee6cdd405b7be6a8d7/.gitignore
+  ... and 8 more files
+
+* `{PROBLEM_STATEMENT}` (optional): If present in the PR; may be empty. + Problem statement: Not available (empty in SWE-Bench data)
+
+* `{TEST_PATCH_UNIFIED_DIFF}` (optional): Whether tests were changed (reference only; **do not reveal code**). + Test patch: Not available (no tests were changed or test patch is empty)
+
+* `{AVG_FILES}`, `{TOTAL_FILES}`, `{TOTAL_LINES}` (optional): Aggregate repo stats. + Total files: 1
+Total lines: 2
+Python files: 0
+Python lines: 0
+
+## Hard Rules
+
+1. **No Leakage**: Do **not** quote, paraphrase, summarize, or expose any content from `{PATCH_UNIFIED_DIFF}` or `{TEST_PATCH_UNIFIED_DIFF}`.
+
+2. **Grounding**: All requirements must be **strictly derived** from `{PR_JSON}` + code context at `{BASE_COMMIT_SHA}`. No hallucinated APIs/files/behaviors.
+
+3. **Edit Scope**: The "Files to modify" list in the question must be a **subset of** `{PATCH_METADATA.changed_files}` and should reflect the actual loci of change.
+
+4. **Context Snippets**: If helpful, you may include **small excerpts** from `{ORACLE_FILES}` to illustrate the **pre-change** context only (avoid large blocks). For large references, use link stubs:
+
+   ```
+
+   <github_code_start>https://github.com/Unknown/Unknown/blob/{BASE_COMMIT_SHA}/path/to/file.py#L100-L160</github_code_start>
+
+   ```
+
+5. **Verifiability**: Phrase acceptance criteria so that a grader could verify by applying a correct patch to `{BASE_COMMIT_SHA}` and running the project. Do **not** reveal expected code.
+
+6. **Unsuitable PRs**: If inputs are insufficient (e.g., doc-only/binary-only changes, missing base code), output **only** `BAD_PR` inside the Question block.
+
+## Output Format (produce **only** this block)
+
+````
+
+<|Question Begin|>
+
+Title: {Concise, domain-relevant title}
+
+Scenario (agent-style, production context):
+
+- Briefly describe the real-world motivation and the subsystem involved, derived from {PR_JSON}.
+
+- Keep it practical (e.g., configuration loading, IO pipeline, API contract fix).
+
+Available Materials:
+
+- Base commit: {BASE_COMMIT_SHA}
+
+- Code bundle: {BASE_CODE_TAR_PATH} or {BASE_CODE_DIR}
+
+- Repository: {REPO_METADATA.owner}/{REPO_METADATA.name}
+
+- (Optional) Context excerpts (pre-change) from ORACLE_FILES:
+
+  ```python
+
+  # file: path/to/file.py @ {BASE_COMMIT_SHA}
+
+  # short snippet showing current API/signature/usage relevant to the change
+
+````
+
+Or link stubs:
+
+<github_code_start>[https://github.com/Unknown/Unknown/blob/{BASE_COMMIT_SHA}/path/to/file.py#L120-L168](https://github.com/Unknown/Unknown/blob/{BASE_COMMIT_SHA}/path/to/file.py#L120-L168)</github_code_start>
+
+Your Task:
+
+* Implement the required fix/feature by editing **only** these files:
+
+  * path/to/fileA.py
+
+  * path/to/fileB.json
+
+    (All listed files must be a subset of {PATCH_METADATA.changed_files}.)
+
+* Preserve public contracts unless the change is explicitly required by the scenario.
+
+Functional Requirements:
+
+* Bullet the concrete behaviors expected after the change (input/output, config keys, error handling, edge cases), reconstructed from {PR_JSON}.
+
+* Avoid spoilers (no code, no diff lines, no exact identifiers beyond what exists at base).
+
+Constraints:
+
+* Performance/complexity expectations if implied by the PR (e.g., do not introduce O(N^2) in hot path).
+
+* Backward compatibility or migration notes as applicable.
+
+* Do not modify files outside the scope above.
+
+How We Evaluate:
+
+* Apply the candidate's patch to {BASE_COMMIT_SHA}.
+
+* Run the minimal command(s) to exercise the change (e.g., `python main.py --config path/to/config.json`) and/or project tests if they exist.
+
+* Success signals: specify observable outcomes (logs, CLI output, behavior) without revealing implementation.
+
+Submission Format:
+
+* Submit a unified diff patch that applies cleanly to {BASE_COMMIT_SHA}.
+
+* Do not include compiled artifacts or large assets.
+
+(If the PR is unsuitable or inputs insufficient, output BAD_PR.)
+
+<|Question End|>
+
+```
+
+## Final Instruction
+
+- Output **only** the `<|Question Begin|>…<|Question End|>` block.  
+
+- Do **not** include any additional sections, notes, or explanations.

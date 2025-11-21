@@ -1,0 +1,88 @@
+{
+    "OCR": [
+        "Chinese-Card-OCR",
+        "Chinese-OCR",
+        "hme100k",
+        "icdar_2015",
+        "LaTeX_OCR",
+        "LaTeX_OCR_column_rename_full",
+        "llavar",
+        "poie",
+        "stvqa",
+        "tabwp_cot",
+        "textvqa",
+        "k12-print",
+        "handwritten_cn",
+        "ESTVQA",
+        "value-added-tax-invoice-cn",
+        "aiplane-itinerary-cn",
+        "bank_card_cn",
+        "bus_ticket_cn",
+        "customs_declaration_cn",
+        "duty-paid-proof-cn",
+        "express_waybill_cn",
+        "invoice-mix-up-cn",
+        "medical_bill_cn",
+        "quota_invoice_cn",
+        "railway_ticket_cn",
+        "ride_sharing_cn",
+        "steamer_ticket_cn",
+        "taxi_ticket_cn",
+        "toll_invoice_cn",
+        "vat_invoice_roll_cn",
+        "invoices-and-receipts_ocr_v1_image_translation",
+        "docvqa"
+    ],
+    "CAPTION": [
+        "allava_cap",
+        "gpt4v-cn",
+        "lvis_instruct4v_cap_cn"
+    ],
+    "CHART": [
+        "ChartQA"
+    ],
+    "DIAGRAM": [
+        "infovqa"
+    ],
+    "QA": [
+        "kvqa",
+        "free_style_qa",
+        "sharegpt4v_choice_cn",
+        "sharegpt4v_llava158k",
+        "sharegpt4v_qa_cn",
+        "vsr"
+    ],
+    "GROUNDING": [],
+    "MATH": [
+        "clevr_math_5w",
+        "geo3k",
+        "geoqa+",
+        "iconqa_choose_txt",
+        "iconqa_fill_blank",
+        "MathV360K",
+        "super_clever"
+    ],
+    "MEMES": [
+        "memes-500"
+    ],
+    "SCIENCE": [
+        "mm_ai2d",
+        "scienceqa",
+        "tqa"
+    ],
+    "TEXT": [
+        "500k-atlas-math",
+        "alpaca-gpt4",
+        "lima",
+        "math",
+        "mini-gemini",
+        "MathInstruct",
+        "MetaMathQA",
+        "openhermes2.5",
+        "orca-math-word-problems-200k",
+        "belle_cn_1m",
+        "NuminaMath-CoT"
+    ],
+    "DETECTION": [],
+    "REASONING": []
+}

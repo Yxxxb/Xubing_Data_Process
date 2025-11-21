@@ -1,0 +1,53 @@
+## Task
+Design a **Coding Assessment Question**.
+## Objective
+As an experienced programming instructor, you are designing programming questions to assess
+students' understanding of **{PACKAGE_NAME}**. The question must be grounded in a **real-world, agent-style scenario** where code is used as a tool to accomplish a concrete task (e.g., scheduling, rate-limited IO, resilience to transient failures, batch processing, caching). The student’s solution should demonstrate both **fundamental** and **advanced** usage of this package in a way that would plausibly appear in production-like systems.
+## Guidelines
+I will provide you with the documentation of **{PACKAGE_NAME}**. It could be a HTML, Jupyter notebook,
+TXT, or RST file. This can be the entire package documentation or a subset of the overall documentation (some packages' full documentation is too long to provide due to context limitations).
+Please **analyze the provided documentation** and design a scenario-driven question that:
+1. **Agent / Tool-Use Framing**
+* Poses a realistic problem where a software agent (or service component) must call into code implemented by the student as its “tool.”
+* Clearly defines the agent’s inputs, outputs, and constraints (e.g., rate limits, retries with backoff, timeouts, caching, batching, concurrency caps, idempotency).
+* Avoids requiring real network access unless explicitly supported by {PACKAGE_NAME}; when external services would be needed, require **simulation/mocking** using features recommended or enabled by {PACKAGE_NAME} and the standard library.
+2. **Faithful to {PACKAGE_NAME}**
+* Requires non-trivial use of the package’s core APIs, data structures, and patterns emphasized in the provided docs.
+* Disallows unrelated third-party libraries unless they are explicitly part of {PACKAGE_NAME} or the standard library.
+3. **Clear, Self-Contained, and Testable**
+* Specifies concrete **function/class signatures**, expected **input/output formats**, and **configuration interfaces** (e.g., via function parameters, dataclasses, or env-style config objects).
+* Enumerates **edge cases** and **failure modes** the solution must handle (e.g., invalid inputs, partial failures, empty batches, unicode/locale issues, clock skew).
+* States **determinism requirements** (e.g., seed any randomness).
+* Includes **performance expectations** (e.g., asymptotic complexity and/or big-O memory bounds) that are meaningful for the package.
+* Where relevant, ask for **observability hooks** (logging/tracing metrics) in a minimal, package-appropriate way.
+4. **Realism Over Toy Problems**
+* The scenario should resemble production tasks such as: resilient data fetching under rate limits; job scheduling/timelines; cryptographic signing and timestamping; bulk file or stream processing; TLS/certificate auditing; geolocation with caching; GPU/array compute kernels; etc.
+* You may take inspiration from such themes but must **tailor the task to the capabilities and idioms of {PACKAGE_NAME}** found in the doucument.
+5. **Constraints & Prohibitions**
+* No hidden infrastructure or opaque services. If network-like behavior is needed, require a **mock** or **in-memory stub**.
+* No assumptions about system threads/processes beyond what {PACKAGE_NAME} and the standard library provide (e.g., if true concurrency isn’t allowed, require timeline computation instead).
+* Prefer portable file formats for any artifacts (JSON, CSV, PNG) if the package supports them.
+## Output Format
+Please use the following output format for consistency.
+<|Analysis Begin|>
+[Summarize the relevant portions of the document: APIs, patterns, limitations, and how they inform the scenario design. Justify why the proposed problem meaningfully exercises {PACKAGE_NAME} at both basic and advanced levels. Identify which features you will require (e.g., batching utilities, vectorized ops, parsers, schedulers, retries, cache primitives) and how evaluation will inspect them.]
+<|Analysis End|>
+<|Question Begin|>
+[Write the complete, self-contained coding question. It MUST include:
+* **Scenario**: a realistic agent/tool-use story that motivates the problem.
+* **Deliverables**: functions/classes to implement with exact signatures and docstrings.
+* **Input/Output Spec**: precise schemas or examples (types, shapes, encodings).
+* **Behavioral Requirements**: caching strategy, retry policy, timeouts, batching, concurrency limits, idempotency, determinism.
+* **Edge Cases**: enumerate invalid inputs, partial failures, unicode/locale, empty data, large batches, etc.
+* **Performance Requirements**: time/space complexity targets or upper bounds relevant to {PACKAGE_NAME}.
+* **Testing Hints**: describe how the grader will call the code; provide small sample fixtures or mocks; forbid external network unless the docs allow offline simulation.
+* **Constraints**: allowed dependencies (only {PACKAGE_NAME} + standard library, unless the document says otherwise).
+* **Optional Extensions** (clearly marked): e.g., metrics emission, CLI wrapper, CSV/JSON report generation, PNG rendering if supported.
+If you believe the provided documentation is insufficient to design such a question, output exactly:
+BAD_DOCUMENT
+]
+<|Question End|>
+## Documentation
+{CONTENT}
+---
+Now, please output the analysis and the question.

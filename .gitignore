@@ -1,0 +1,7 @@
+workspace/
+__pycache__/
+MMDataKit.egg-info/
+flagged/
+*.log
+.vscode/
+# xubing_dataprocess/
